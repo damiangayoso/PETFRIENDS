@@ -1,0 +1,77 @@
+body {
+	background-color: #FFFCFA;
+}
+
+header.bg-header{
+	background-color: #79A8B1;
+	padding-top: 20px;
+	padding-bottom: 5px;
+}
+
+footer.bg-footer{
+	background-color: #79A8B1;
+}
+
+article.bg-article{
+	background-color: #FFFCFA;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+}
+
+.equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.buscador{
+		padding-top: 10px;
+}
+
+button.menu_header{
+	font-size: 16px;
+	color:#ffffff;
+	background-color: #79A8B1;
+	border: 5px;
+	border-color: #ffffff;
+}
+
+textarea.textarea:focus{
+	border-color: #79A8B1;
+	box-shadow: 0 0 5px rgba(121, 168, 177, 1);
+}
+
+#buscador:focus{
+	border-color: #79A8B1;
+	box-shadow: 0 0 5px rgba(121, 168, 177, 1);
+}
+
+a.pet_nombre{
+	color: #ffffff;
+}
+
+#Search,#otherSearch,#Search_other,#Search_cachorros {
+    background-image: url('../images/search.png'); /* Add a search icon to input */
+    background-position: 13px 14px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+a.boton_other{
+	font-size:22px;
+	color:#79A8B1;
+	background-color:#ffffff;
+	border-style:dashed;
+	border-width:15px;
+	border-color:#79A8B1;
+	width:250px;
+	height:250px;
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:95px;
+	border-radius: 12px;
+}
