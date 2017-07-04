@@ -28,24 +28,34 @@ $query_infoPet = 	"SELECT *
 					AND pets.pet_name = '$pet_name'";
 $consulta_infoPet = mysqli_query($conexion,$query_infoPet);
 $infoPet = mysqli_fetch_array($consulta_infoPet);
+$pet_id = $infoPet ["pet_id"];
+
+$query_actualizar = "SELECT * FROM petfriends_db.lost_pets as lost_pets
+					WHERE lost_pets.lost_petId = '$pet_id' AND lost_pets.lost_userId = '$user'";
+$consulta_actualizar = mysqli_query($conexion,$query_actualizar);					
+
+$status = "ENCONTRADO";
+
+
+if(mysqli_num_rows($consulta_actualizar)>0) {
+	$query_ac = "UPDATE petfriends_db.lost_pets as lost_pets SET lost_pets.lost_status = '$status'
+				WHERE lost_pets.lost_petId = '$pet_id' AND lost_pets.lost_userId = '$user'";
+	$consulta_ac = mysqli_query($conexion,$query_ac);								
+}
 
 echo '<article class="bg-article col-md-12 row equal">
-<div class="col-md-12"><p class="text-center"><img src="'.$infoPet["pet_photo"].'" width="300px"></p></div>
-<div class="col-md-3"></div>
-<div class="col-md-3">
-<p style="color:#79A8B1;font-size:24px;font-weight: bold;">Nombre: <span style="font-size:20px;">'.$infoPet["pet_name"].'</span></p>
-<p style="color:#79A8B1;font-size:24px;font-weight: bold;">Tipo: '.$infoPet["type_description"].'</p>
-<p style="color:#79A8B1;font-size:24px;font-weight: bold;">Raza: '.$infoPet["breed_description"].'</p></div><div class="col-md-3">
-<p style="color:#79A8B1;font-size:24px;font-weight: bold;">Edad: '.$infoPet["pet_age"].'</p>
-<p style="color:#79A8B1;font-size:24px;font-weight: bold;">Tama&ntildeo: '.$infoPet["pet_size"].'</p>
-</div>
-<div class="col-md-3"></div>
-<div class="col-md-12 text-center">
-<a role="button" data-toggle="collapse" data-target="#mensaje"  class="btn btn-outline-primary boton_other" href="/PETFRIENDS/html/pet/other_perdida_2.php?pet_name='.$pet_name.'&user_pet_id='.$user.'">Encontre tu Mascota!</a>
-<a role="button" class="btn btn-outline-primary boton_other" href="/PETFRIENDS/index.php">Seguir Mascota!</a>
-<a role="button" class="btn btn-outline-primary boton_other" href="/PETFRIENDS/index.php">Cita con tu Mascota!</a>
-</div>
 
+<div id="mensaje" class=" col-md-12">
+<form method="post" action="mailto:'.$infoPet["user_email"].'" enctype="text/plain">
+	<p></p>
+	<div class="form-group">
+	<label for="comentario">Mandar un correo a '.$infoPet["user_firstName"].' '.$infoPet["user_lastName"].':</label>
+	<textarea class="form-control" rows="5" name="texto_comentario" id="comentario"></textarea>
+	<p></p>
+	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Enviar!</button>
+	</div>
+	</form>
+</div>
 </article>';
 
 
